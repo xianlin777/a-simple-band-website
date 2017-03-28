@@ -258,11 +258,6 @@ function prepareGallery() {
 }
 
 
-addLoadEvent(highlightPage);
-addLoadEvent(prepareSlideshow);
-addLoadEvent(prepareInternalnav);
-addLoadEvent(preparePlaceholder);
-addLoadEvent(prepareGallery);
 
 /live
 function stripTables() {
@@ -344,7 +339,7 @@ function focusLabels() {
   if(!document.getElementsByTagName) return false;
   var labels = document.getElementsByTagName("label");
   for(var i=0; i<labels.length;i++ ) {
-    if(1labels[i].getAttribute("for")) continue;
+    if(labels[i].getAttribute("for")) continue;
     labels[i].onclick = function() {
       var id = this.getAttribute("for");
       if(!document.getElementById(id)) return false;
