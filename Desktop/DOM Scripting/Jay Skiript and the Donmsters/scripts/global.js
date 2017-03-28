@@ -339,6 +339,22 @@ function displayAbbrevations() {
 
 }
 
+//contact
+function focusLabels() {
+  if(!document.getElementsByTagName) return false;
+  var labels = document.getElementsByTagName("label");
+  for(var i=0; i<labels.length;i++ ) {
+    if(1labels[i].getAttribute("for")) continue;
+    labels[i].onclick = function() {
+      var id = this.getAttribute("for");
+      if(!document.getElementById(id)) return false;
+      var element = document.getElementById(id);
+      element.focus();
+    }
+  }
+}
+
+
 addLoadEvent(highlightPage);
 addLoadEvent(prepareSlideshow);
 addLoadEvent(prepareInternalnav);
@@ -347,6 +363,7 @@ addLoadEvent(prepareGallery);
 addLoadEvent(stripTables);
 addLoadEvent(highlightRows);
 addLoadEvent(displayAbbrevations);
+addLoadEvent(focusLabels);
 
 
 
