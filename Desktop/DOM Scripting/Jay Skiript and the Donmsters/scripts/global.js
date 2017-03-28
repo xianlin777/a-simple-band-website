@@ -140,7 +140,44 @@ function prepareSlideshow() {
   }
 }
 
+function showSection(id) {
+  var sections = document.getElementsByTagName("section");
+  if (sections.length < 1) return false;
+  for(var i=0; i<sections.length;i++) {
+    if (sections[i].getAttribute('id') != id) {
+      sections[i].style.display = "none";
+    }else {
+      sections[i].style.display = "block";
+    }
+  }
+}
+
+function prepareInternalnav() {
+  if(!document.getElementsByTagName) return false;
+  if(!document.getElementById) return false;
+  var articles = document.getElementsByTagName("article");
+  if(articles.length == 0) return false;
+  var navs = articles[0].getElementsByTagName('nav');
+  if(navs.length == 0) return false;
+  var nav = navs[0];
+  var links = nav.getElementsByTagName('a');
+  for(var i=0; i<links.length; i++) {
+    var selectionId = links[i].getAttribute('href').split('#')[1];
+    if(!document.getElementById(selectionId)) continue;
+    document.getElementById(selectionId).style.display = "none";
+    links[i].destination = selectionId;
+    links[i].onclick = function() {
+      showSection(this.destination);
+      return false;
+    }
+  }
+}
+
 addLoadEvent(highlightPage);
 addLoadEvent(prepareSlideshow);
+addLoadEvent(prepareInternalnav);
+
+
+
 
 
