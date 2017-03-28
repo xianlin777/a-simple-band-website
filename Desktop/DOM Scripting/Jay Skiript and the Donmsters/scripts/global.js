@@ -116,7 +116,7 @@ function prepareSlideshow() {
   frame.setAttribute("id", "frame");
   slideshow.appendChild(frame);
 
-  var links = intro.getElementsByTagName("a");
+  var links = document.getElementsByTagName("a");
   var destination;
   for(var i=0;i<links.length;i++) {
     links[i].onmouseover = function() {
